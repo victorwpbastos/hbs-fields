@@ -7,7 +7,7 @@ module.exports = function(element, options) {
 	var wrapper = '<div class="col-md-{{cols}}">{{content}}</div>'.replace('{{cols}}', cols);
 	var template = [
 		'<div class="form-group">',
-		'	<label for="{{id}}" class="control-label">{{label}}</label>',
+		'	<label for="{{id}}" class="control-label {{hidden}}">{{label}}</label>',
 		'	{{element}}',
 		'</div>'
 	].join('\n');
@@ -46,8 +46,13 @@ module.exports = function(element, options) {
 		element.addClass('form-control');
 	}
 
+	if(label) {
+		template = template.replace('{{label}}', label);
+	} else {
+		template = template.replace('{{hidden}}', 'hidden');
+	}
+
 	template = template.replace('{{id}}', attrs.id);
-	template = template.replace('{{label}}', label);
 	template = template.replace('{{element}}', element[0].outerHTML);
 
 	if(cols) {
