@@ -16,6 +16,10 @@ module.exports = function(element, options) {
 
 	element.attr(attrs);
 
+	if(attrs.type === 'hidden') {
+		template = '{{element}}';
+	}
+
 	if(attrs.type === 'checkbox' || attrs.type === 'radio') {
 		if(attrs.inline) {
 			template = [
