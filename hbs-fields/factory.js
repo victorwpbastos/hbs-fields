@@ -21,7 +21,7 @@ module.exports = function(element, options) {
 	}
 
 	if(attrs.type === 'checkbox' || attrs.type === 'radio') {
-		if(attrs.inline) {
+		if(attrs.inline === true || attrs.inline === 'true') {
 			template = [
 				'<label class="{{type}}-inline {{disabled}}">',
 				'	{{element}} {{label}}',
