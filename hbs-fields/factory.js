@@ -12,7 +12,11 @@ module.exports = function(element, options) {
 		'</div>'
 	].join('\n');
 
-	attrs.id = attrs.id || attrs.name || _.uniqueId('field_');
+	if(attrs.type === 'checkbox' || attrs.type === 'radio') {
+		attrs.id = attrs.id || _.uniqueId('field_');
+	} else {
+		attrs.id = attrs.id || attrs.name || _.uniqueId('field_');
+	}
 
 	element.attr(attrs);
 
@@ -48,7 +52,9 @@ module.exports = function(element, options) {
 
 	if(label) {
 		template = template.replace('{{label}}', label);
+		template = template.replace('{{hidden}}', '');
 	} else {
+		template = template.replace('{{label}}', '');
 		template = template.replace('{{hidden}}', 'hidden');
 	}
 
