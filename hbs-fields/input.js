@@ -1,4 +1,5 @@
 var Handlebars = require('handlebars/runtime')['default'];
+var _ = require('underscore');
 var Factory = require('./factory');
 
 Handlebars.registerHelper('input', function(attrs) {
@@ -8,6 +9,14 @@ Handlebars.registerHelper('input', function(attrs) {
 		var msg = 'Não há suporte a este tipo de input. Use {{radio}} ou {{checkbox}}!';
 		console.error(msg);
 		return new Handlebars.SafeString('<span class="text-danger">'+msg+'</span>');
+	}
+
+	if(!_.isEmpty(attrs.data.root) && attrs.hash.name && !attrs.hash.value) {
+		var value = attrs.data.root[attrs.hash.name];
+
+		if(value !== undefined) {
+			attrs.hash.value = value;
+		}
 	}
 
 	return new Handlebars.SafeString(Factory($('<input/>'), attrs));
