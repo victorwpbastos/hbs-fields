@@ -6,7 +6,7 @@ Handlebars.registerHelper('input', function(attrs) {
 	attrs.hash.type = attrs.hash.type || 'text';
 
 	if(attrs.hash.type === 'radio' || attrs.hash.type === 'checkbox') {
-		var msg = 'Não há suporte a este tipo de input. Use {{radio}} ou {{checkbox}}!';
+		var msg = 'For radio and checkbox input types use {{radio}} or {{checkbox}}!';
 		console.error(msg);
 		return new Handlebars.SafeString('<span class="text-danger">'+msg+'</span>');
 	}
