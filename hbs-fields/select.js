@@ -1,6 +1,7 @@
 var Handlebars = require('handlebars/runtime')['default'];
 var _ = require('underscore');
 var Factory = require('./factory');
+var Walker = require('./walker');
 
 Handlebars.registerHelper('select', function(attrs) {
 	var element = $('<select/>');
@@ -9,7 +10,7 @@ Handlebars.registerHelper('select', function(attrs) {
 		var options = attrs.fn(this);
 
 		if(!_.isEmpty(attrs.data.root) && attrs.hash.name) {
-			var value = attrs.data.root[attrs.hash.name];
+			var value = Walker(attrs.data.root, attrs.hash.name);
 
 			if(value !== undefined) {
 				options = options.replace(/\n/g, '');

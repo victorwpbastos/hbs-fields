@@ -1,6 +1,7 @@
 var Handlebars = require('handlebars/runtime')['default'];
 var _ = require('underscore');
 var Factory = require('./factory');
+var Walker = require('./walker');
 
 Handlebars.registerHelper('input', function(attrs) {
 	attrs.hash.type = attrs.hash.type || 'text';
@@ -12,7 +13,7 @@ Handlebars.registerHelper('input', function(attrs) {
 	}
 
 	if(!_.isEmpty(attrs.data.root) && attrs.hash.name && !attrs.hash.value) {
-		var value = attrs.data.root[attrs.hash.name];
+		var value = Walker(attrs.data.root, attrs.hash.name);
 
 		if(value !== undefined) {
 			attrs.hash.value = value;
