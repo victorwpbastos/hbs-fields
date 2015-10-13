@@ -6,6 +6,10 @@ var Walker = require('./walker');
 Handlebars.registerHelper('radio', function(attrs) {
 	attrs.hash.type = 'radio';
 
+	if(attrs.hash.inline === undefined) {
+		attrs.hash.inline = true;
+	}
+
 	if(!_.isEmpty(attrs.data.root) && attrs.hash.name) {
 		var value = Walker(attrs.data.root, attrs.hash.name);
 

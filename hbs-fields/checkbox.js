@@ -6,6 +6,10 @@ var Walker = require('./walker');
 Handlebars.registerHelper('checkbox', function(attrs) {
 	attrs.hash.type = 'checkbox';
 
+	if(attrs.hash.inline === undefined) {
+		attrs.hash.inline = true;
+	}
+
 	if(!_.isEmpty(attrs.data.root) && attrs.hash.name) {
 		var value = Walker(attrs.data.root, attrs.hash.name);
 
