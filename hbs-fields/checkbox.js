@@ -11,12 +11,12 @@ Handlebars.registerHelper('checkbox', function(attrs) {
 
 		if(value !== undefined) {
 			if(_.isArray(value)) {
-				if(_.contains(value, attrs.hash.value)) {
+				if(_.contains(value, attrs.hash.value.toString())) {
 					attrs.hash.checked = true;
 				}
 			} else {
 				value = value.toString();
-				if(value === attrs.hash.value) {
+				if(value === attrs.hash.value.toString()) {
 					attrs.hash.checked = true;
 				}
 			}
