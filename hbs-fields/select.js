@@ -14,10 +14,9 @@ Handlebars.registerHelper('select', function(attrs) {
 
 			if(value !== undefined) {
 				options = options.replace(/\n/g, '');
-				options = options.replace(/\s</g, '<');
-				options = options.replace(/>\s/g, '>');
+				options = options.replace(/\s+</g, '<');
+				options = options.replace(/>\s+/g, '>');
 				options = options.replace(/></g, '>|<');
-
 				options = options.split('|');
 
 				_(options).each(function(option, index) {
