@@ -1,3 +1,5 @@
+![Deprecated! Use [github.com/victorwpbastos/form-helpers] instead.](http://messages.hellobits.com/warning.svg?message=Deprecated!%20Use%20%5Bgithub.com%2Fvictorwpbastos%2Fform-helpers%5D%20instead.)
+
 # hbs-fields
 
 > A collection of [Handlebars](http://handlebarsjs.com) html form helpers.
